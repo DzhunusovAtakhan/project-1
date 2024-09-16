@@ -1,54 +1,30 @@
-"use strict";
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
-
-const personalMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false,
-};
-
-// for (let i = 0; i < 2; i++) {
-//   const a = prompt("Один из последних просмотренных фильмов?", ""),
-//     b = prompt("На сколько оцените его?", "");
-//   if (a != null && b != null && (a != "") & (b != "") && a.length < 50) {
-//     personalMovieDB.movies[a] = b;
-//   }
+//1.1Task
+// function sayHello(text) {
+//   return `Привет, ${text}`;
 // }
+// console.log(sayHello("Антон"));
 
-// let i = 0;
-// while (i < 2) {
-//   const a = prompt("Один из последних просмотренных фильмов?", ""),
-//     b = prompt("На сколько оцените его?", "");
-//   if (a != null && b != null && (a != "") & (b != "") && a.length < 50) {
-//     personalMovieDB.movies[a] = b;
-//   } else {
-//     --i;
-//   }
-//   i++;
-// }
-
-let i = 0;
-do {
-  const a = prompt("Один из последних просмотренных фильмов?", ""),
-    b = prompt("На сколько оцените его?", "");
-  if (a != null && b != null && (a != "") & (b != "") && a.length < 50) {
-    personalMovieDB.movies[a] = b;
-  } else {
-    --i;
-  }
-  i++;
-} while (i < 2);
-
-if (personalMovieDB.count < 10) {
-  console.log("Просмотрено довольно мало фильмов");
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-  console.log("Вы классический зритель");
-} else if (personalMovieDB.count >= 30) {
-  console.log("Вы киноман");
-} else {
-  console.log("Произошла ошибка!");
+//1.2Task
+function returnNeighboringNumbers(num) {
+  return [num - 1, num, num + 1];
 }
+console.log(returnNeighboringNumbers(5));
 
-console.log(personalMovieDB);
+//1.3Task
+function getMathResult(a, b) {
+  if (typeof b !== "number" || b <= 0) {
+    return a;
+  }
+
+  let str = "";
+
+  for (let i = 1; i <= b; i++) {
+    if (i === b) {
+      str += `${a * i}`;
+    } else {
+      str += `${a * i}---`;
+    }
+  }
+  return str;
+}
+console.log(getMathResult(5, 3));
