@@ -1,42 +1,25 @@
 "use strict";
 
-//To String
-//1
-console.log(typeof String(null));
-console.log(typeof String(4));
+function createCounter() {
+  let counter = 0;
 
-//2
-console.log(typeof (5 + ""));
-const num = 5;
-console.log("http://vk.com/catalog/" + num);
-const fontSize = 26 + "px";
+  const myCounter = function () {
+    debugger;
+    counter = counter + 1;
+    debugger;
+    return counter;
+    debugger;
+  };
 
-//TO NUMBER
-//1
-console.log(typeof Number("4"));
-
-//2
-console.log(typeof +"5");
-
-//3
-console.log(typeof parseInt("15px", 10));
-
-//TO BOOLEAN
-// 0, "", null, undefined, NaN === false;
-
-//1
-let switcher = null;
-
-if (switcher) {
-  console.log("Working...");
+  return myCounter;
 }
-switcher = 1;
-if (switcher) {
-  console.log("Working...");
-}
-
-//2
-console.log(typeof Boolean("4"));
-
-//3
-console.log(typeof !!"4");
+debugger;
+const increment = createCounter();
+debugger;
+const c1 = increment();
+debugger;
+const c2 = increment();
+debugger;
+const c3 = increment();
+debugger;
+console.log(c1, c2, c3);
