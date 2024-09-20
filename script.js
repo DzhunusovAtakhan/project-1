@@ -1,79 +1,125 @@
 "use strict";
 
-const personalMovieDB = {
-  count: 0,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false,
-  start: () => {
-    personalMovieDB.count = prompt("Сколько фильмов вы уже посмотрели?", "");
-
-    while (
-      personalMovieDB.count == "" ||
-      personalMovieDB.count == null ||
-      isNaN(personalMovieDB.count)
-    ) {
-      personalMovieDB.count = prompt("Сколько фильмов вы уже посмотрели?", "");
-    }
-  },
-  rememberMyFilms: () => {
-    for (let i = 0; i < 2; i++) {
-      const a = prompt("Один из последних просмотренных фильмов?", "").trim(),
-        b = prompt("На сколько оцените его?", "");
-
-      if (a != null && b != null && (a != "") & (b != "") && a.length < 50) {
-        personalMovieDB.movies[a] = b;
-      }
-    }
-  },
-  detectPersonalLevel: () => {
-    if (personalMovieDB.count < 10) {
-      console.log("Просмотрено довольно мало фильмов");
-    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-      console.log("Вы классический зритель");
-    } else if (personalMovieDB.count >= 30) {
-      console.log("Вы киноман");
-    } else {
-      console.log("Произошла ошибка!");
-    }
-  },
-  showMyDB: (hidden) => {
-    if (!hidden) {
-      console.log(personalMovieDB);
-    }
-  },
-  toggleVisibleMyDB: () => {
-    if (personalMovieDB.privat) {
-      personalMovieDB.privat = false;
-    } else {
-      personalMovieDB.privat = true;
-    }
-  },
-  writeYourGenres: () => {
-    for (let i = 1; i < 2; i++) {
-      // let genre = prompt(`Ваш любимый жанр под номером ${i}`);
-      // if (genre === "" || genre == null) {
-      //   console.log("Error");
-      //   i--;
-      // } else {
-      //   personalMovieDB.genres[i - 1] = genre;
-      // }
-      let genres = prompt(
-        `Введите ваши любимые жанры через запятую`
-      ).toLowerCase();
-      if (genres === "" || genres == null) {
-        console.log("Error");
-        i--;
-      } else {
-        personalMovieDB.genres = genres.split(", ");
-        personalMovieDB.genres.sort();
-      }
-    }
-    personalMovieDB.genres.forEach((item, i) => {
-      console.log(`Любимый жанр №${i + 1} это - ${item}`);
-    });
-  },
+//Task1.1
+const shoppingMallData = {
+  shops: [
+    {
+      width: 10,
+      length: 5,
+    },
+    {
+      width: 15,
+      length: 7,
+    },
+    {
+      width: 20,
+      length: 5,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+  ],
+  height: 5,
+  moneyPer1m3: 30,
+  budget: 50000,
 };
 
-personalMovieDB.toggleVisibleMyDB();
+const shoppingMallData2 = {
+  shops: [
+    {
+      width: 10,
+      length: 5,
+    },
+    {
+      width: 15,
+      length: 7,
+    },
+    {
+      width: 20,
+      length: 5,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+    {
+      width: 8,
+      length: 10,
+    },
+  ],
+  height: 4,
+  moneyPer1m3: 45,
+  budget: 790000,
+};
+
+function isBudgetEnough(data) {
+  let mallWidth = 0;
+  let mallLength = 0;
+  for (let key in data.shops) {
+    for (let i in data.shops[key]) {
+      if (i === "width") {
+        mallWidth += data.shops[key][i];
+      } else if (i === "length") {
+        mallLength += data.shops[key][i];
+      }
+    }
+  }
+  const totalShopSqr = mallLength * mallWidth;
+  const mallVolume = totalShopSqr * data.height;
+
+  const totalHeatingCoast = mallVolume * data.moneyPer1m3;
+  console.log(data.budget - totalHeatingCoast);
+  if (data.budget - totalHeatingCoast >= 0) {
+    return "Бюджета достаточно";
+  } else {
+    return "Бюджета не достаточно";
+  }
+}
+
+// isBudgetEnough(shoppingMallData);
+// console.log(isBudgetEnough(shoppingMallData2));
+
+//2.1Task
+const students = [
+  "Peter",
+  "Andrew",
+  "Ann",
+  "Mark",
+  "Josh",
+  "Sandra",
+  "Cris",
+  "Bernard",
+  "Takesi",
+  "Sam",
+  "Alex",
+];
+
+function sortStudentsByGroups(arr) {
+  arr.sort();
+  const groupArr = [];
+  let remStud;
+
+  for (let i = 0; i < arr.length; i += 3) {
+    const group = arr.slice(i, i + 3);
+    groupArr.push(group);
+  }
+
+  if (groupArr[groupArr.length - 1].length < 3) {
+    remStud = groupArr.pop().join(", ");
+  } else {
+    remStud = "-";
+  }
+  const result = [...groupArr, "Оставшиеся студенты : " + remStud];
+  return result;
+}
+// sortStudentsByGroups(students);
+console.log(sortStudentsByGroups(students));
