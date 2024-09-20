@@ -1,68 +1,41 @@
 "use strict";
 
-//1.1Task
+const box = document.getElementById("box"),
+  btns = document.getElementsByTagName("button"),
+  circles = document.getElementsByClassName("circle"),
+  wrapper = document.querySelector(".wrapper"),
+  hearts = wrapper.querySelectorAll(".heart"),
+  oneHeart = wrapper.querySelector(".heart");
 
-const restorantData = {
-  menu: [
-    {
-      name: "Salad Caesar",
-      price: "14$",
-    },
-    {
-      name: "Pizza Diavola",
-      price: "9$",
-    },
-    {
-      name: "Beefsteak",
-      price: "17$",
-    },
-    {
-      name: "Napoleon",
-      price: "7$",
-    },
-  ],
-  waitors: [
-    { name: "Alice", age: 22 },
-    { name: "John", age: 24 },
-  ],
-  averageLunchPrice: "20$",
-  openNow: true,
-};
+// box.style.backgroundColor = "blue";
+// box.style.width = "500px";
 
-function isOpen(prop) {
-  let answer = "";
-  !prop ? (answer = "Закрыто") : (answer = "Открыто");
+box.style.cssText = "background-color: blue; width: 500px";
 
-  return answer;
-}
+btns[1].style.borderRadius = "100%";
+circles[0].style.backgroundColor = "red";
 
-// console.log(isOpen(restorantData.openNow));
+hearts.forEach((item) => {
+  item.style.backgroundColor = "blue";
+});
 
-function isAverageLunchPriceTrue(fDish, sDish, average) {
-  if (
-    +fDish.price.slice(0, -1) + +sDish.price.slice(0, -1) <
-    +average.slice(0, -1)
-  ) {
-    return "Цена ниже средней";
-  } else {
-    return "Цена выше средней";
-  }
-}
+const div = document.createElement("div");
+// const text = document.createTextNode("Tyt byl ya");
 
-// console.log(
-//   isAverageLunchPriceTrue(
-//     restorantData.menu[1],
-//     restorantData.menu[3],
-//     restorantData.averageLunchPrice
-//   )
-// );
+div.classList.add("black");
+wrapper.append(div);
+// wrapper.appendChild(div);
+// wrapper.prepend(div);
 
-function transferWaitors(data) {
-  const copy = Object.assign({}, data);
-  copy.waitors = [{ name: "Mike", age: 32 }];
-  return copy;
-}
+// hearts[1].before(div);
+// hearts[1].after(div);
 
-// transferWaitors(restorantData);
-// console.log(restorantData);
-console.log(transferWaitors(restorantData));
+// wrapper.insertBefore(div, hearts[1]);
+
+// circles[0].remove();
+// hearts[0].replaceWith(circles[0]);
+
+// div.innerHTML = "<h1>Hello World!</h1>";
+
+// div.textContent = "Hello";
+div.insertAdjacentHTML("beforebegin", "<h2>Hello World!</h2>");
