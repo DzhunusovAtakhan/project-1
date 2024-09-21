@@ -1,41 +1,42 @@
 "use strict";
 
-const box = document.getElementById("box"),
-  btns = document.getElementsByTagName("button"),
-  circles = document.getElementsByClassName("circle"),
-  wrapper = document.querySelector(".wrapper"),
-  hearts = wrapper.querySelectorAll(".heart"),
-  oneHeart = wrapper.querySelector(".heart");
+const btns = document.querySelectorAll("button"),
+  overlay = document.querySelector(".overlay");
 
-// box.style.backgroundColor = "blue";
-// box.style.width = "500px";
+// btn.onclick = () => {
+//   alert("Click");
+// };
 
-box.style.cssText = "background-color: blue; width: 500px";
+// btn.addEventListener("click", () => {
+//   alert("Click");
+// });
+// btn.addEventListener("click", () => {
+//   alert("Second Click");
+// });
+// btn.addEventListener("mouseenter", () => {
+//   console.log("Hover");
+// });
 
-btns[1].style.borderRadius = "100%";
-circles[0].style.backgroundColor = "red";
+let i = 0;
+const deleteElement = (e) => {
+  console.log(e.currentTarget);
+  console.log(e.type);
+  //   i++;
+  //   if (i == 1) {
+  //     btn.removeEventListener("click", deleteElement);
+  //   }
+};
+// btn.addEventListener("click", deleteElement);
+// overlay.addEventListener("click", deleteElement);
 
-hearts.forEach((item) => {
-  item.style.backgroundColor = "blue";
+btns.forEach((btn) => {
+  btn.addEventListener("click", deleteElement, { once: true });
 });
 
-const div = document.createElement("div");
-// const text = document.createTextNode("Tyt byl ya");
+const link = document.querySelector("a");
 
-div.classList.add("black");
-wrapper.append(div);
-// wrapper.appendChild(div);
-// wrapper.prepend(div);
+link.addEventListener("click", (e) => {
+  e.preventDefault();
 
-// hearts[1].before(div);
-// hearts[1].after(div);
-
-// wrapper.insertBefore(div, hearts[1]);
-
-// circles[0].remove();
-// hearts[0].replaceWith(circles[0]);
-
-// div.innerHTML = "<h1>Hello World!</h1>";
-
-// div.textContent = "Hello";
-div.insertAdjacentHTML("beforebegin", "<h2>Hello World!</h2>");
+  console.log(e.target);
+});
