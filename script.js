@@ -1,31 +1,11 @@
-//touchstart
-//touchmove
-//touchend
-//touchenter
-//touchleave
-//touchcancel
+console.log("first");
 
-window.addEventListener("DOMContentLoaded", () => {
-  const box = document.querySelector(".box");
+function loadScript(src) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.async = false;
+  document.body.append(script);
+}
 
-  box.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-
-    console.log("Start");
-  });
-  box.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-
-    // console.log("Move");
-    console.log(e.targetTouches[0].pageX);
-  });
-  box.addEventListener("touchend", (e) => {
-    e.preventDefault();
-
-    console.log("End");
-  });
-});
-
-//touches
-//targetTouches
-//changedTouches
+loadScript("test.js");
+loadScript("some.js");
