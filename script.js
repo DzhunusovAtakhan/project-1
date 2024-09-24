@@ -1,39 +1,25 @@
-const btn = document.querySelector(".btn");
-let timerId,
-  i = 0;
+"use strict";
 
-function myAnimation() {
-  const elem = document.querySelector(".box");
-  let pos = 0;
+const now = new Date();
 
-  const id = setInterval(frame, 10);
+console.log(now.setHours(18));
+console.log(now);
 
-  function frame() {
-    if (pos === 300) {
-      clearInterval(id);
-    } else {
-      pos++;
-      elem.style.top = pos + "px";
-      elem.style.left = pos + "px";
-    }
-  }
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDate());
+// console.log(now.getDay());
+// console.log(now.getHours());
+// console.log(now.getUTCHours());
+
+// console.log(now.getTimezoneOffset());
+// console.log(now.getTime());
+
+let start = new Date();
+
+for (let i = 0; i < 100000; i++) {
+  let some = i ** 3;
 }
-btn.addEventListener("click", myAnimation);
 
-// btn.addEventListener("click", () => {
-//   //   const timeId = setTimeout(logger, 2000);
-//   timerId = setInterval(logger, 500);
-// });
-
-// function logger() {
-//   if (i === 3) {
-//     clearInterval(timerId);
-//   }
-//   console.log("text");
-//   i++;
-// }
-
-// let id = setTimeout(function log() {
-//   console.log("Hello");
-//   id = setTimeout(log, 500);
-// }, 500);
+let end = new Date();
+alert(`Цикл отработал за ${end - start} миллисекунд`);
