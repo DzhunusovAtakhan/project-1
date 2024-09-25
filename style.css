@@ -1,20 +1,21 @@
-.box {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-color: blue;
+* {
+  box-sizing: border-box;
 }
-.wrapper {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  border: 3px solid red;
+.timer {
+  display: flex;
+  flex-direction: row;
 }
-button {
-  margin-bottom: 10px;
-  margin-top: 10px;
+.timer-block {
   width: 100px;
-  height: 40px;
-  background-color: yellow;
-  border: none;
+  height: 200px;
+  font-size: 20px;
+  margin: 20px;
+  border: 1px solid #0c0202;
+  text-align: center;
+}
+.timer-block span {
+  display: block;
+  font-size: 70px;
+  margin-top: 30%;
+  margin-bottom: 30px;
 }
