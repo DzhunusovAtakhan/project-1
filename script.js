@@ -1,62 +1,23 @@
 "use strict";
 
-const deadLine = "2024-09-26";
+const box = document.querySelector(".box"),
+  btn = document.querySelector("button");
 
-function getTimeDiff(endtime) {
-  let days, hours, minutes, seconds;
+// const width = box.clientWidth;
+// const height = box.clientHeight;
+// const width = box.offsetWidth;
+// const height = box.offsetHeight;
+const width = box.scrollWidth;
+const height = box.scrollHeight;
 
-  const t = Date.parse(endtime) - Date.parse(new Date());
+console.log(width, height);
 
-  if (t <= 0) {
-    days = 0;
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-  } else {
-    days = Math.floor(t / (1000 * 60 * 60 * 24));
-    hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-    minutes = Math.floor((t / (1000 * 60)) % 60);
-    seconds = Math.floor((t / 1000) % 60);
-  }
+btn.addEventListener("click", () => {
+  //   box.style.height = box.scrollHeight + "px";
+  console.log(box.scrollTop);
+});
 
-  return {
-    total: t,
-    days: days,
-    hours: hours,
-    minutes: minutes,
-    seconds: seconds,
-  };
-}
+console.log(box.getBoundingClientRect().top);
 
-function getZero(num) {
-  if (num < 10 || num <= 0) {
-    return `0${num}`;
-  } else {
-    return num;
-  }
-}
-
-function setClock(selector, endtime) {
-  const timer = document.querySelector(selector),
-    days = timer.querySelector("#days"),
-    hours = timer.querySelector("#hours"),
-    minutes = timer.querySelector("#minutes"),
-    seconds = timer.querySelector("#seconds"),
-    timeInterval = setInterval(updateClock, 1000);
-
-  updateClock();
-
-  function updateClock() {
-    const t = getTimeDiff(endtime);
-
-    days.innerHTML = getZero(t.days);
-    hours.innerHTML = getZero(t.hours);
-    minutes.innerHTML = getZero(t.minutes);
-    seconds.innerHTML = getZero(t.seconds);
-
-    if (t.total <= 0) {
-      clearInterval(timeInterval);
-    }
-  }
-}
-setClock(".timer", deadLine);
+const style = window.getComputedStyle(box);
+console.log(style.display);
