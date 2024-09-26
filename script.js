@@ -1,54 +1,38 @@
 "use strict";
 
-// console.log("Запрос данных...");
-
-// const req = new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     console.log("Получение данных...");
-//     const product = {
-//       name: "TV",
-//       price: 2000,
-//     };
-
-//     resolve(product);
-//   }, 2000);
+//filter
+// const names = ["Taha", "John", "Annita", "Voldemart"];
+// const shortNames = names.filter((name) => {
+//   return name.length < 5;
 // });
+// console.log(shortNames);
 
-// req
-//   .then((product) => {
-//     return new Promise((res, rej) => {
-//       setTimeout(() => {
-//         product.status = "order";
-//         res(product);
-//       }, 2000);
-//     });
-//   })
-//   .then((data) => {
-//     data.modify = true;
-//     return data;
-//   })
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch(() => {
-//     console.error("Произошла ошибка");
-//   })
-//   .finally(() => {
-//     console.log("Finally");
-//   });
+//map
+// const answers = ["ToDo", "wHiTe", "WILLi"];
+// const result = answers.map((item) => item.toLowerCase());
+// console.log(result);
 
-const test = (time) => {
-  return new Promise((res) => {
-    setTimeout(() => res(), time);
-  });
+//every/some
+// const someArr = [5, "qwe", "qertyui"];
+// console.log(someArr.some((item) => typeof item === "number"));
+// console.log(someArr.every((item) => typeof item === "number"));
+
+//reduce
+// const arr = [3, 5, 6, 1, 2, 6];
+// const res = arr.reduce((sum, current) => sum + current, 3);
+// console.log(res);
+// const arr = ["apple", "mango", "banan"];
+// const res = arr.reduce((sum, current) => `${sum}, ${current}`);
+// console.log(res);
+
+const obj = {
+  taha: "person",
+  ann: "person",
+  dog: "animal",
+  cat: "animal",
 };
 
-// test(1000).then(() => console.log("1000ms"));
-// test(2000).then(() => console.log("2000ms"));
-
-// Promise.all([test(1000), test(2000)]).then(() => {
-//   console.log("all");
-// });
-Promise.race([test(1000), test(2000)]).then(() => {
-  console.log("all");
-});
+const newArr = Object.entries(obj)
+  .filter((item) => item[1] == "person")
+  .map((item) => item[0]);
+console.log(newArr);
