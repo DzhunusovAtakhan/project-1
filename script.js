@@ -1,15 +1,26 @@
 "use strict";
 
-const person = {
-  name: "Alex",
-  tel: "+9965555555",
-  parents: {
-    mom: "Olga",
-    dad: "Mike",
-  },
-};
+const inputRub = document.querySelector("#rub"),
+  inputUsd = document.querySelector("#usd");
 
-const clone = JSON.parse(JSON.stringify(person));
-clone.parents.mom = "Ann";
-console.log(person);
-console.log(clone);
+inputRub.addEventListener("input", () => {
+  const request = new XMLHttpRequest();
+
+  request.open("GET", "current1.json");
+  request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  request.send();
+
+  request.addEventListener("load", () => {
+    if (request.status === 200) {
+      const data = JSON.parse(request.response);
+      inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+    } else {
+      inputUsd.value = "чтото пошло не так";
+    }
+  });
+
+  //status
+  //statusText
+  //response
+  //readyState
+});
