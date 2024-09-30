@@ -1,42 +1,25 @@
 "use strict";
+//i
+//g
+//m
+// const res = prompt("Введите ваше имя");
+// const sym = /\d/g;
+// console.log(res.match(sym));
 
-// localStorage.setItem("number", 5);
+const str = "My name is R2D2";
+// console.log(str.match(/\w\d\w\d/i));
+console.log(str.match(/\W/gi));
 
-// // localStorage.removeItem("number");
-// localStorage.clear();
-// console.log(localStorage.getItem("number"));
+//\D - не числа
+//\W - не слова
 
-const checkbox = document.querySelector("#checkbox"),
-  form = document.querySelector("form"),
-  change = document.querySelector("#color");
+//\d - цифры
+//\w - слова и буквы
+//\s - пробелы
 
-if (localStorage.getItem("isChecked")) {
-  checkbox.checked = true;
-}
+// console.log(res.search(sym));
+// console.log(res.match(sym));
 
-if (localStorage.getItem("bg") === "changed") {
-  form.style.backgroundColor = "red";
-}
+// const pass = prompt("Password");
 
-checkbox.addEventListener("change", () => {
-  localStorage.setItem("isChecked", true);
-});
-
-change.addEventListener("click", () => {
-  if (localStorage.getItem("bg") === "changed") {
-    localStorage.removeItem("bg");
-    form.style.backgroundColor = "#fff";
-  } else {
-    localStorage.setItem("bg", "changed");
-    form.style.backgroundColor = "red";
-  }
-});
-
-const person = {
-  name: "alex",
-  age: 28,
-};
-
-const somePerson = JSON.stringify(person);
-localStorage.setItem("alex", somePerson);
-console.log(JSON.parse(localStorage.getItem("alex")));
+// console.log(pass.replace(/./g, "*"));
