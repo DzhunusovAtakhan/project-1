@@ -1,35 +1,22 @@
 "use strict";
 
-class User {
-  constructor(name, age) {
-    this.name = name;
-    this._age = age;
-  }
+// const number = 1;
 
-  #surname = "Swon";
+// (function () {
+//   let number = 2;
+//   console.log(number);
+//   console.log(number + 3);
+// })();
 
-  say = () => {
-    console.log(
-      `Меня зовут ${this.name} ${this.#surname}, мой возраст: ${this._age}`
-    );
+// console.log(number);
+
+const user = (function () {
+  const privat = function () {
+    console.log("I am privat");
   };
+  return {
+    sayHello: privat,
+  };
+})();
 
-  get age() {
-    return this._age;
-  }
-
-  set age(num) {
-    if (typeof num === "number" && num > 0 && num < 110) {
-      this._age = num;
-    } else {
-      console.log("Incorrect");
-    }
-  }
-}
-
-const ivan = new User("Ivan", 27);
-// console.log(ivan.age);
-// ivan.age = 99;
-console.log(ivan.surname);
-
-ivan.say();
+user.sayHello();
